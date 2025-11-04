@@ -1,0 +1,279 @@
+/* --- reset basico ---*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body{
+    font-family: 'Segoe ui', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #dfffd6, #c6f7c4); /* Verde lechuga suave */
+    color: #1b4332; /*verde oscuro para texto*/
+    line-height: 1.6;
+}
+
+
+/*--- Header y navegacion ---*/
+
+header { 
+    background-color: #2d6a4f; /* verde intenso para contraste */
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 4px solid #95d5b2; /* Verde claro */
+}
+
+nav ul {                                                                                                                                            
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #ff8ae0; /* Crema suave , buena legibilidad */
+    font-weight: bold;
+    transition: color 0.3s, transform 0.2s;
+}
+
+nav a:hover {
+    color: #ff8c42; /* naranja: incentiva click */
+    transform: scale(1.05);
+}
+
+/*--- Contador de Carrito ---*/
+
+#cart-count {
+    margin-left: 6px;
+    padding: 2px 8px;
+    background: #ff8c42;  /*Naranja vibrante*/
+    color: #fff;
+    border-radius: 999px;  /* forma circular */
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+/*--- Secciones ---*/
+
+main, section {
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8); /* caja ligera sobre el fondo*/
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/*--- Catalogo de Productos ---*/
+
+.catalogo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.producto {
+    background: #ffffff;
+    border: 2px solid #95d5b2;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.producto img{
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+.producto h3{
+    font-size: 1.2rem;
+    color:#2d6a4f; /* verde oscuro, transmite frescura */
+}
+
+.producto p{
+    color: #1b4332; /* verde fuerte para resaltar precio */
+    font-weight: bold;
+}
+
+.producto:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/*--- botones ---*/
+
+button{
+    background-color: #ff8c42; /*naranja: accion y energia */
+    color:white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor:pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #e36414; /*Naranja mas fuerte*/
+    transform: scale(1.05)
+}
+
+/*-- Carrito --*/
+
+#carrito table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#carrito th{
+    background: #74c69d; /*verde motivador*/
+    color:#fff;
+}
+
+/*-- Formulario --*/
+
+form label {
+    font-weight: bold;
+    color: #2d6a4f;
+}
+
+form input, form textarea{
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #95d5b2;
+    border-radius: 8px;
+}
+
+form input:focus, form textarea:focus{
+    outline:none;
+    border-color:#2d6a4f;
+    box-shadow: 0 0 5px #2d6a4f;
+}
+
+/*-- Mensajes de validacion ---*/
+
+#msg-form.error{
+    color: red;
+    font-weight: bold;
+}
+
+#msg-form.succes{
+    color: green;
+    font-weight: bold;
+}
+
+/*-- Footer --*/
+
+footer{
+    background: #2d6a4f;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    margin-top: 15px;
+    border-top: 4px solid #95d5b2;
+}
+
+/* --- Validación: estilos rápidos --- */
+.field { margin-bottom: 14px; }
+.field input, .field textarea {
+    width: 100%;
+    border: 1px solid #cfd8dc;
+    border-radius: 8px;
+    padding: 10px 12px;
+    outline: none;
+}
+.field input.is-invalid, .field textarea.is-invalid {
+    border-color: #e53935;
+    background: #fff5f5;
+}
+.error-msg {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.9rem;
+    color: #c62828;
+    min-height: 1em; /* reserva espacio para que no salte el layout */
+}
+.form-alert {
+    margin: 12px 0;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: #e8f5e9;
+    color: #1b5e20;
+    border: 1px solid #c8e6c9;
+}
+.form-alert.is-error {
+    background: #ffebee;
+    color: #b71c1c;
+    border-color: #ffcdd2;
+}
+
+/* --- Bootstrap overrides para Verdulería El Huertito --- */
+
+/* Navbar (Bootstrap) adaptada al header del huertito */
+.navbar {
+    background-color: #2d6a4f !important; /* verde intenso */
+    color: #fff !important;
+    border-bottom: 4px solid #95d5b2;
+}
+
+.navbar .navbar-brand {
+    color: #fff !important;
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+.navbar .navbar-brand:hover { color: #ff8c42 !important; text-decoration: none; }
+
+.nav-link {
+    color: #ff8ae0 !important;
+    font-weight: 700;
+    transition: color 0.25s, transform 0.15s;
+}
+.nav-link:hover, .nav-link.active { color: #ff8c42 !important; transform: scale(1.02); }
+
+/* Botón del carrito en la navbar */
+.btn-outline-success {
+    background-color: #ff8c42 !important; /* naranja */
+    color: #fff !important;
+    border: none !important;
+}
+.btn-outline-success:hover { background-color: #e36414 !important; }
+
+.badge {
+    background-color: #ff8c42 !important;
+    color: #fff !important;
+    border-radius: 999px;
+    padding: 0.25rem 0.55rem;
+    font-weight: 700;
+}
+
+/* Cart and product cards (Bootstrap .card -> estilo huertito) */
+.card {
+    border: 2px solid #95d5b2 !important;
+    border-radius: 12px !important;
+}
+.card .card-title {
+    color: #2d6a4f;
+    font-weight: 700;
+}
+.card .card-text {
+    color: #1b4332;
+    font-weight: 700;
+}
+
+/* Asegurar que imágenes dentro de .card mantengan borde redondeado */
+.card-img-top { border-top-left-radius: 10px; border-top-right-radius: 10px; }
+
+/* Ajustes responsivos menores */
+@media (max-width: 576px) {
+  .navbar .navbar-brand { font-size: 1rem; }
+  .card .card-title { font-size: 1rem; }
+}
