@@ -39,10 +39,13 @@ export default function NavBar() {
               <li className="nav-item"><NavLink className="nav-link" to="/login">Login</NavLink></li>
             )}
             {sesion && (
-              <li className="nav-item" style={{ display: 'flex', alignItems: 'center' }}>
-                <span style={{ marginRight: 8 }}>Hola, {sesion.email}</span>
-                <button onClick={handleLogout} style={{ background: 'transparent', border: 'none', color: '#ff8c42', fontWeight: 700, cursor: 'pointer' }}>Salir</button>
-              </li>
+              <>
+                <li className="nav-item"><NavLink className="nav-link" to="/profile">Perfil</NavLink></li>
+                <li className="nav-item" style={{ display: 'flex', alignItems: 'center' }}>
+                  <span style={{ marginRight: 8 }}>Hola, {sesion.email}</span>
+                  <button onClick={handleLogout} style={{ background: 'transparent', border: 'none', color: '#ff8c42', fontWeight: 700, cursor: 'pointer' }}>Salir</button>
+                </li>
+              </>
             )}
           </ul>
 

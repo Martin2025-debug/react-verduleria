@@ -6,7 +6,7 @@ export default function ProductCard({ product }) {
   return (
     <div className="producto">
       <img src={product.img} alt={product.name} />
-      <h3>{product.name}</h3>
+      <h3>{product.code ? `${product.code} - ${product.name}` : product.name}</h3>
       <p>{clp(product.price)} / kg</p>
       <button onClick={() => add(product)}>Agregar al carrito</button>
     </div>

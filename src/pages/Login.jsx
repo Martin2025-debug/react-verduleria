@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { login, registrar, getSesion } from '../utils/auth.js';
+import { login, registrar, getSesion, getUser } from '../utils/auth.js';
 
 export default function Login() {
   const nav = useNavigate();
@@ -9,10 +9,12 @@ export default function Login() {
   const [pass, setPass] = useState('');
   const [msg, setMsg] = useState('');
 
-  if (getSesion()) {
-    // si ya hay sesión, redirigir a inicio
-    nav('/');
-  }
+  useEffect(() => {
+    if (getSesion()) {
+      // si ya hay sesión, redirigir a inicio
+      nav('/');
+    }
+  }, [nav]);
 
   async function onSubmit(e) {
     e.preventDefault();
@@ -20,10 +22,18 @@ export default function Login() {
     try {
       if (mode === 'login') {
         login(email.trim(), pass);
+        // si al loguear falta perfil, redirigir a /profile
+        const user = getUser(email.trim());
+        if (!user || !user.address || !user.phone) {
+          nav('/profile');
+        } else {
+          nav('/');
+        }
       } else {
         registrar(email.trim(), pass);
+        // nuevo registro: llevar a completar perfil
+        nav('/profile');
       }
-      nav('/');
     } catch (err) {
       setMsg(err.message || 'Ocurrió un error');
     }
