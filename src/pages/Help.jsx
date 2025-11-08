@@ -1,6 +1,13 @@
 export default function Help() {
   return (
+
+
+
+// contenedor principal de la pagina de ayuda
     <main>
+      
+
+      
       <h2>Centro de ayuda — Verdulería El Huertito</h2>
 
       <section style={{ marginTop: 12 }}>

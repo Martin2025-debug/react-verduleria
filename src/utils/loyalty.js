@@ -1,4 +1,6 @@
 // src/utils/loyalty.js
+
+// programa de lealtad: 10% de descuento desde la quinta compra //
 export function getLoyalty(user) {
   if (!user) return { count: 0, discount: 0, discountPct: 0, reason: null };
 
@@ -9,6 +11,7 @@ export function getLoyalty(user) {
   return { count, discount, discountPct, reason: discountPct ? 'Cliente frecuente' : null };
 }
 
+// incrementa el contador de peddidos del usuario //
 export function bumpOrderCount(user) {
   if (!user) return;
   const key = `orders_count_${user.email}`;

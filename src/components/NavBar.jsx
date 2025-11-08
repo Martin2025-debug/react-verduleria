@@ -1,12 +1,21 @@
+
+// imports para recargar la pagina - crear enlaces SPA - redirigir codigo //
+
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useCart } from "../contexts/CartContext.jsx";
 import { useEffect, useState } from "react";
 import { getSesion, logout } from "../utils/auth.js";
 
+
+// Estado y navegacion //
+
 export default function NavBar() {
   const { totalItems } = useCart();
   const [sesion, setSesion] = useState(getSesion());
   const nav = useNavigate();
+
+
+// Sincroniazar sesion entre pestañas/Acciones //
 
   useEffect(() => {
     const onStorage = () => setSesion(getSesion());
@@ -17,6 +26,9 @@ export default function NavBar() {
       window.removeEventListener('sesion-changed', onStorage);
     };
   }, []);
+
+
+//cerrar sesion y redirigir a inicio //
 
   function handleLogout() {
     logout();
