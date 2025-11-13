@@ -173,14 +173,26 @@ form input:focus, form textarea:focus{
 
 /*-- Footer --*/
 
-footer{
-    background: #2d6a4f;
-    color: #fff;
-    text-align: center;
-    padding: 15px;
-    margin-top: 15px;
-    border-top: 4px solid #95d5b2;
+/* Estilos para el contenido principal */
+main {
+  padding-bottom: 60px; /* evita que el footer tape el contenido */
 }
+
+/* Estilos para el pie de página */
+footer {
+  background-color: #2d6a4f;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 4px solid #95d5b2;
+  font-size: 0.9rem;
+  z-index: 100;
+}
+
 
 /* --- Validación: estilos rápidos --- */
 .field { margin-bottom: 14px; }
@@ -276,4 +288,603 @@ footer{
 @media (max-width: 576px) {
   .navbar .navbar-brand { font-size: 1rem; }
   .card .card-title { font-size: 1rem; }
+}
+
+
+
+
+
+
+
+/* ✅ --- BLOQUE NUEVO AGREGADO ABAJO --- */
+/* --- Sticky Footer (mantener el pie de página abajo en todas las vistas) --- */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Este contenedor está en App.jsx: <div className="app-container"> */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* fuerza que ocupe toda la pantalla */
+}
+
+/* El main crece para empujar el footer hacia abajo */
+main {
+  flex: 1;
+}
+
+/* El footer queda al fondo cuando no hay contenido suficiente */
+footer {
+  margin-top: auto;
+}
+
+
+
+
+/* --- Descripción de producto (nuevo bloque) --- */
+.producto .description {
+  font-size: 0.9rem;
+  color: #2d6a4f; /* verde oscuro legible */
+  margin: 8px 0 12px;
+  font-style: italic;
+  line-height: 1.4;
+  display: block; /* asegura que el texto sea visible */
+}
+
+
+
+
+
+/* --- Ajuste de secciones del catálogo --- */
+section {
+  margin-bottom: 30px;
+  padding: 15px 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* --- El grid se adapta mejor al número de productos --- */
+.catalogo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* flexible */
+  gap: 20px;
+  justify-items: center; /* centra los productos cuando hay pocos */
+}
+
+/* --- Ajuste visual para categorías con pocos productos --- */
+section:has(.catalogo > :only-child),
+section:has(.catalogo > :nth-child(2):last-child) {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+/* --- Estilos para los títulos de categoría --- */
+.category-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2d6a4f;
+  margin: 25px 0 15px;
+  padding: 8px 14px;
+  background-color: #d8f3dc;
+  border-left: 6px solid #40916c;
+  border-radius: 8px;
+}
+
+/* --- Colores sutiles por tipo de categoría --- */
+section:nth-of-type(1) .category-title { background-color: #ffe8b3; } /* Frutas */
+section:nth-of-type(2) .category-title { background-color: #d4f8d4; } /* Verduras */
+section:nth-of-type(3) .category-title { background-color: #fff3cd; } /* Orgánicos */
+section:nth-of-type(4) .category-title { background-color: #d9ecff; } /* Lácteos */
+
+
+
+
+
+
+/* --- Asegurar altura y distribución uniforme del catálogo --- */
+.catalogo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  align-items: start;
+  min-height: 400px; /* fuerza que todas las categorías midan al menos lo mismo */
+}
+
+/* --- Tamaño fijo visual para las tarjetas de producto --- */
+.producto {
+  background: #ffffff;
+  border: 2px solid #95d5b2;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.3s;
+  height: 100%; /* ocupa todo el alto posible dentro del grid */
+  max-width: 300px; /* mantiene proporción uniforme */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* --- Limitar tamaño de imagen para que no se estiren --- */
+.producto img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: contain; /* mantiene proporción sin deformar */
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+/* --- Ajuste visual para secciones pequeñas (1 producto) --- */
+section .catalogo:only-child,
+section .catalogo > .producto:only-child {
+  justify-content: center;
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+/* --- Sección Enunciado, Misión y Visión --- */
+.bienvenida {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.institucional {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.institucional .bloque h2 {
+  font-size: 1.5rem;
+  color: #1b4332;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.institucional .bloque p {
+  color: #2d6a4f;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+@media (max-width: 768px) {
+  .institucional {
+    padding: 20px;
+  }
+  .institucional .bloque h2 {
+    font-size: 1.3rem;
+  }
+}
+
+
+
+
+
+
+
+
+/* --- Blog educativo (alimentación saludable y sostenibilidad) --- */
+.blog {
+  margin-top: 40px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 25px 30px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.blog h2 {
+  color: #1b4332;
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.blog-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.blog-post {
+  background: #ffffff;
+  border: 2px solid #95d5b2;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.blog-post:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.blog-post img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.blog-post h3 {
+  color: #2d6a4f;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.blog-post p {
+  color: #1b4332;
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  text-align: justify;
+}
+
+.blog-post .leer-mas {
+  display: inline-block;
+  background-color: #ff8c42;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.blog-post .leer-mas:hover {
+  background-color: #e36414;
+}
+
+@media (max-width: 768px) {
+  .blog h2 {
+    font-size: 1.3rem;
+  }
+  .blog-post img {
+    height: 150px;
+  }
+}
+
+
+
+
+
+
+
+
+
+/* --- Logo dentro del NavBar --- */
+.logo-navbar {
+  height: 45px; /* tamaño controlado */
+  width: auto;
+  border-radius: 8px;
+  transition: transform 0.25s ease;
+}
+
+.logo-navbar:hover {
+  transform: scale(1.05);
+}
+
+/* Alinear mejor logo + texto */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+
+
+
+
+/* --- Logo principal en la página Home --- */
+.logo-principal {
+  height: auto; /* tamaño visible y equilibrado */
+  width: 100%;
+  max-width: 450px;
+  display: block;
+  margin: 0 auto 12px auto; /* centrado y con espacio inferior */
+  transition: transform 0.3s ease;
+  border-radius: 8px;
+}
+
+.logo-principal:hover {
+  transform: scale(1.05);
+}
+
+/* Subtítulo de bienvenida */
+.bienvenida .lead {
+  font-size: 1.2rem;
+  color: #1b4332;
+}
+
+
+
+
+
+
+
+
+/* --- Botones para compartir --- */
+.social-share {
+  margin-top: 12px;
+  text-align: center;
+}
+
+.social-share p {
+  font-size: 0.9rem;
+  color: #1b4332;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.social-icon {
+  width: 26px;
+  height: 26px;
+  margin: 0 6px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.2);
+}
+
+
+
+
+
+
+
+
+
+/* --- Reseñas y calificaciones --- */
+.reviews {
+  margin-top: 15px;
+  background: #f7fff7;
+  border: 1px solid #95d5b2;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.reviews h4 {
+  color: #2d6a4f;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.review-item {
+  background: #ffffff;
+  border: 1px solid #cfe3d2;
+  border-radius: 8px;
+  padding: 8px;
+  margin-bottom: 8px;
+}
+
+.review-item p {
+  margin: 5px 0;
+}
+
+.review-item small {
+  color: #555;
+  font-size: 0.8rem;
+}
+
+.no-reviews {
+  color: #777;
+  font-style: italic;
+}
+
+.review-form textarea {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #95d5b2;
+  padding: 8px;
+  margin-top: 6px;
+  margin-bottom: 8px;
+  resize: none;
+  font-size: 0.9rem;
+}
+
+.review-form button {
+  background: #ff8c42;
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.review-form button:hover {
+  background: #e36414;
+}
+
+/* --- estrellas --- */
+.stars-select .star {
+  cursor: pointer;
+  font-size: 1.3rem;
+  color: #ccc;
+  transition: color 0.2s;
+}
+
+.stars-select .star.active {
+  color: #ffb703;
+}
+
+.stars {
+  color: #ffb703;
+  margin-bottom: 5px;
+}
+
+
+
+
+
+
+
+
+
+/* --- Gestión y seguimiento de envíos --- */
+.delivery-section, .tracking-section {
+  margin-top: 20px;
+  background: #f6fff4;
+  border: 1px solid #95d5b2;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.delivery-section h4, .tracking-section h4 {
+  color: #2d6a4f;
+  margin-bottom: 10px;
+}
+
+input[type="date"] {
+  padding: 8px;
+  border: 1px solid #95d5b2;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+/* Barra de seguimiento visual */
+.tracking-bar {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+}
+
+.tracking-step {
+  flex: 1;
+  text-align: center;
+  padding: 8px;
+  border-radius: 8px;
+  background: #e9ecef;
+  color: #555;
+  font-weight: 600;
+  margin: 0 5px;
+  transition: all 0.3s ease;
+}
+
+.tracking-step.active {
+  background: #74c69d;
+  color: white;
+}
+
+.current-status {
+  font-weight: bold;
+  color: #1b4332;
+  margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+/* --- Notificaciones y boleta --- */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #2d6a4f;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+  animation: fadeInOut 4s ease forwards;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-10px); }
+  10%, 90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+
+.receipt {
+  margin-top: 25px;
+  background: #ffffff;
+  border: 2px solid #95d5b2;
+  border-radius: 10px;
+  padding: 20px;
+  color: #1b4332;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.receipt h3 {
+  color: #2d6a4f;
+  margin-bottom: 10px;
+}
+
+.receipt button {
+  background: #ff8c42;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.receipt button:hover {
+  background: #e36414;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+
+
+
+
+/* --- Mapa e tiendas fisicas ---*/
+
+.mapa-tiendas {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #f0fff0;
+  border-radius: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.mapa-tiendas h2 {
+  color: #2d6a4f;
+  margin-bottom: 10px;
+}
+
+.mapa-tiendas p {
+  color: #1b4332;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.mapa-contenedor {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
 }

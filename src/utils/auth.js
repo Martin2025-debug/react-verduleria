@@ -1,4 +1,5 @@
 // src/utils/auth.js
+// claves usadas en local storage
 const LS_USUARIOS = 'usuarios';
 const LS_SESION = 'sesion';
 
@@ -12,17 +13,26 @@ const LS_SESION = 'sesion';
   }
 })();
 
+
+// obtener array de usuarios desde Local Storage //
+
 function getUsuarios() {
   return JSON.parse(localStorage.getItem(LS_USUARIOS) || '[]');
 }
+
+// persistir array de usuarios en Local Storage //
 function saveUsuarios(arr) {
   localStorage.setItem(LS_USUARIOS, JSON.stringify(arr));
 }
+
+// obtiene un usuario por email //
 
 export function getUser(email) {
   if (!email) return null;
   return getUsuarios().find(u => u.email === email) || null;
 }
+
+// actualiza datos del usuario //
 
 export function updateUser(email, patch) {
   const usuarios = getUsuarios();
@@ -33,6 +43,8 @@ export function updateUser(email, patch) {
   return usuarios[i];
 }
 
+
+//registra un nuevo usuario //
 export function registrar(email, pass) {
   const usuarios = getUsuarios();
   if (usuarios.some(u => u.email === email)) {
